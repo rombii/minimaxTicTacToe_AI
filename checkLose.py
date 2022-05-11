@@ -1,4 +1,4 @@
-def checkmove(mov, char, game_field):
+def check_move(mov, char, game_field):
     if mov == 1:
         if game_field[1] == char and game_field[2] == char:
             return True

@@ -1,16 +1,14 @@
-import random
-
-import pygame
 from pygame.locals import *
 
-from minimax import selectbestmove
-from squareSelect import whichsquare
+from checkLose import check_move
 from drawSymbol import *
-from checkLose import checkmove
+from minimax import select_best_move
+from squareSelect import which_square
 
 possible_move = list(range(1, 10))
 game_field = ['', '', '', '', '', '', '', '', '']
 game_ended = False
+
 
 def main():
     global game_ended
@@ -51,21 +49,22 @@ def main():
             if not game_ended:
                 if event.type == MOUSEBUTTONDOWN:
                     if 50 <= event.pos[0] <= 370 and 50 <= event.pos[1] <= 370:
-                        selectedSquare = whichsquare(event.pos[0], event.pos[1])
+                        selectedSquare = which_square(event.pos[0], event.pos[1])
                         if selectedSquare in possible_move:
-                            drawx(selectedSquare, background)
-                            game_field[selectedSquare-1] = 'x'
+                            draw_x(selectedSquare, background)
+                            game_field[selectedSquare - 1] = 'x'
                             possible_move.remove(selectedSquare)
-                            game_ended = checkmove(selectedSquare, 'x', game_field)
+                            game_ended = check_move(selectedSquare, 'x', game_field)
                             if possible_move.__sizeof__() != 0 and not game_ended:
-                                botchoice = selectbestmove(possible_move, game_field)
-                                drawx(botchoice, background)
-                                game_field[botchoice-1] = 'x'
+                                botchoice = select_best_move(possible_move, game_field)
+                                draw_x(botchoice, background)
+                                game_field[botchoice - 1] = 'x'
                                 possible_move.remove(botchoice)
-                                game_ended = checkmove(botchoice, 'x', game_field)
+                                game_ended = check_move(botchoice, 'x', game_field)
 
         screen.blit(background, (0, 0))
         pygame.display.flip()
 
 
-if __name__ == '__main__': main()
+if __name__ == '__main__':
+    main()

@@ -1,4 +1,4 @@
-def whichsquare(x, y):
+def which_square(x, y):
     if x <= 150 and y <= 150:
         return 1
 
