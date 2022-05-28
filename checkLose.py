@@ -73,3 +73,26 @@ def check_move(mov, char, game_field):
         elif game_field[0] == char and game_field[4] == char:
             return True
         return False
+
+
+def check_game_end(char, game_field):
+    if game_field[0] == game_field[1] == game_field[2] == char:
+        return True
+    elif game_field[3] == game_field[4] == game_field[5] == char:
+        return True
+    elif game_field[6] == game_field[7] == game_field[8] == char:
+        return True
+
+    elif game_field[0] == game_field[3] == game_field[6] == char:
+        return True
+    elif game_field[1] == game_field[4] == game_field[7] == char:
+        return True
+    elif game_field[2] == game_field[5] == game_field[8] == char:
+        return True
+
+    elif game_field[0] == game_field[4] == game_field[8] == char:
+        return True
+    elif game_field[2] == game_field[4] == game_field[6] == char:
+        return True
+    else:
+        return False
