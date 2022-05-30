@@ -24,3 +24,11 @@ def draw_background(screen):
     pygame.draw.circle(background, (255, 255, 255), (50, 266), 5)
     pygame.draw.circle(background, (255, 255, 255), (370, 266), 5)
     return background
+
+
+def draw_menu(screen):
+    main_menu = pygame.Surface(screen.get_size())
+    main_menu = main_menu.convert()
+    main_menu.fill((34, 34, 34))
+
+    return main_menu

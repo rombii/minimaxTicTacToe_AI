@@ -2,13 +2,15 @@ import random
 
 from checkLose import check_game_end
 
+
 def select_best_move(possible_moves, game_field):
     bestScore = -1000
     for move in possible_moves:
         possible_moves.remove(move)
-        game_field[move-1] = 'x'
+        game_field[move - 1] = 'x'
         score = minimax(possible_moves, game_field, False)
-        game_field[move-1] = ''
+        print(move, score)
+        game_field[move - 1] = ''
         possible_moves.append(move)
         possible_moves.sort()
         if score > bestScore:
@@ -27,11 +29,9 @@ def minimax(possible_moves, game_field, player):
             return -100
     for move in possible_moves:
         possible_moves.remove(move)
-        game_field[move-1] = 'x'
+        game_field[move - 1] = 'x'
         score = minimax(possible_moves, game_field, not player)
-        game_field[move-1] = ''
+        game_field[move - 1] = ''
         possible_moves.append(move)
         bestScore = score
     return bestScore
-
-
