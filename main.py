@@ -69,7 +69,7 @@ def main():
     while 1:
         for event in pygame.event.get():
             if event.type == QUIT:
-                return
+                pygame.quit()
             if game_ended:
                 if event.type == KEYDOWN:
                     if event.key == K_r:
